@@ -1,6 +1,6 @@
 %define name stellarium
 %define version 0.8.2
-%define release %mkrel 2
+%define release %mkrel 3
 %define title Stellarium
 
 Name: %{name} 
@@ -68,13 +68,13 @@ cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
 Encoding=UTF-8
 Name=%{title}
-Comment=%{longtitle}
+Comment=Desktop planetarium
 Exec=%{_bindir}/%{name} 
 Icon=%{name}
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=Science;Astronomy;X-MandrivaLinux-MoreApplications-Sciences-Astronomy;
+Categories=Science;Astronomy;
 EOF
 
 %find_lang %{name}
