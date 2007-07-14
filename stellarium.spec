@@ -18,6 +18,7 @@ Buildrequires:	mesaglu-devel
 Buildrequires:	SDL-devel
 Buildrequires:	SDL_mixer-devel
 Buildrequires:	png-devel
+Buildrequires:	jpeg-devel
 Buildrequires:	freetype2-devel
 Buildrequires:	qt4-devel
 BuildRequires:	boost-devel
