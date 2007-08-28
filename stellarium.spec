@@ -62,7 +62,6 @@ bzcat %{SOURCE12} > $RPM_BUILD_ROOT%{_liconsdir}/%{name}.png
 mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
 cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
-Encoding=UTF-8
 Name=%{title}
 Comment=Desktop planetarium
 Exec=%{_bindir}/%{name} 
