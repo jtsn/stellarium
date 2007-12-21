@@ -25,6 +25,7 @@ BuildRequires:	boost-devel
 BuildRequires:	gettext-devel
 Buildrequires:	cmake
 
+BuildRoot:	%{_tmppath}/%{name}-buildroot 
 License:	GPLv2 
 
 %description
