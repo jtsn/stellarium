@@ -1,19 +1,17 @@
 %define name	stellarium
-%define version	0.9.0
+%define version	0.9.1
 %define release	%mkrel 1
 %define title	Stellarium
 
 Name:		%{name} 
-Summary:	Stellarium is a desktop planetarium 
 Version:	%{version} 
 Release:	%{release} 
-Source:		http://stellarium.sourceforge.net/download/%{name}-%{version}.tar.bz2
-Source10:	%{name}.16.png.bz2
-Source11:	%{name}.32.png.bz2
-Source12:	%{name}.48.png.bz2
-Patch0:		stellarium-0.8.2-manpage.diff
-URL:		http://www.stellarium.org
+Summary:	Stellarium is a desktop planetarium 
 Group:		Sciences/Astronomy
+License:	GPLv2 
+URL:		http://www.stellarium.org
+Source:		http://downloads.sourceforge.net/stellarium/%{name}-%{version}.tar.gz
+Patch0:		stellarium-0.8.2-manpage.diff
 Buildrequires:	mesaglu-devel 
 Buildrequires:	SDL-devel
 Buildrequires:	SDL_mixer-devel
@@ -24,9 +22,7 @@ Buildrequires:	qt4-devel
 BuildRequires:	boost-devel
 BuildRequires:	gettext-devel
 Buildrequires:	cmake
-
-BuildRoot:	%{_tmppath}/%{name}-buildroot 
-License:	GPLv2 
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 Stellarium renders 3D photo-realistic skies in real time. 
@@ -46,21 +42,12 @@ export PATH=$QTDIR/bin:$PATH
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 cd build
-make install DESTDIR=$RPM_BUILD_ROOT INSTALL="%{_bindir}/install -c -p"
+make install DESTDIR=%{buildroot} INSTALL="%{_bindir}/install -c -p"
 
-# Icons
-mkdir -p $RPM_BUILD_ROOT%{_liconsdir}
-mkdir -p $RPM_BUILD_ROOT%{_iconsdir}
-mkdir -p $RPM_BUILD_ROOT%{_miconsdir}
-bzcat %{SOURCE10} > $RPM_BUILD_ROOT%{_miconsdir}/%{name}.png
-bzcat %{SOURCE11} > $RPM_BUILD_ROOT%{_iconsdir}/%{name}.png
-bzcat %{SOURCE12} > $RPM_BUILD_ROOT%{_liconsdir}/%{name}.png
-
-
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications
-cat > $RPM_BUILD_ROOT%{_datadir}/applications/mandriva-%{name}.desktop << EOF
+mkdir -p %{buildroot}%{_datadir}/applications
+cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
 Name=%{title}
 Comment=Desktop planetarium
@@ -74,18 +61,7 @@ EOF
 %find_lang %{name}
 
 %clean 
-rm -rf $RPM_BUILD_ROOT 
-
-
-%files -f build/%{name}.lang
-%defattr(-,root,root,0755) 
-%doc README COPYING AUTHORS 
-%{_bindir}/%{name} 
-%{_datadir}/%{name}/
-%{_datadir}/applications/mandriva-%{name}.desktop
-%{_miconsdir}/%{name}.png
-%{_iconsdir}/%{name}.png
-%{_liconsdir}/%{name}.png
+rm -rf %{buildroot} 
 
 %post
 %{update_menus}
@@ -93,5 +69,9 @@ rm -rf $RPM_BUILD_ROOT
 %postun
 %{clean_menus}
 
-
-
+%files -f build/%{name}.lang
+%defattr(-,root,root,0755) 
+%doc README COPYING AUTHORS 
+%{_bindir}/%{name} 
+%{_datadir}/%{name}/
+%{_datadir}/applications/mandriva-%{name}.desktop
