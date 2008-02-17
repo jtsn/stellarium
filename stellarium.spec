@@ -1,6 +1,6 @@
 %define name	stellarium
 %define version	0.9.1
-%define release	%mkrel 1
+%define release	%mkrel 2
 %define title	Stellarium
 
 Name:		%{name} 
@@ -22,6 +22,7 @@ Buildrequires:	qt4-devel
 BuildRequires:	boost-devel
 BuildRequires:	gettext-devel
 Buildrequires:	cmake
+Buildrequires:	imagemagick
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
@@ -58,6 +59,14 @@ Type=Application
 StartupNotify=true
 Categories=Science;Astronomy;
 EOF
+
+install -d -m 755 %{buildroot}{%{_iconsdir},%{_miconsdir},%{_liconsdir}}
+convert  %{buildroot}%{_datadir}/stellarium/data/stellarium.ico[1] \
+    %{buildroot}%{_liconsdir}/stellarium.png
+convert  %{buildroot}%{_datadir}/stellarium/data/stellarium.ico[2] \
+    %{buildroot}%{_iconsdir}/stellarium.png
+convert  %{buildroot}%{_datadir}/stellarium/data/stellarium.ico[4] \
+    %{buildroot}%{_miconsdir}/stellarium.png
 %find_lang %{name}
 
 %clean 
@@ -75,3 +84,6 @@ rm -rf %{buildroot}
 %{_bindir}/%{name} 
 %{_datadir}/%{name}/
 %{_datadir}/applications/mandriva-%{name}.desktop
+%{_iconsdir}/%{name}.png
+%{_liconsdir}/%{name}.png
+%{_miconsdir}/%{name}.png
