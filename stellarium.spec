@@ -6,7 +6,7 @@
 Name:		%{name} 
 Version:	%{version} 
 Release:	%{release} 
-Summary:	Stellarium is a desktop planetarium 
+Summary:	Desktop planetarium 
 Group:		Sciences/Astronomy
 License:	GPLv2 
 URL:		http://www.stellarium.org
