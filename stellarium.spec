@@ -1,6 +1,6 @@
 %define name	stellarium
 %define version	0.9.1
-%define release	%mkrel 3
+%define release	%mkrel 4
 %define title	Stellarium
 
 Name:		%{name} 
@@ -12,6 +12,7 @@ License:	GPLv2
 URL:		http://www.stellarium.org
 Source:		http://downloads.sourceforge.net/stellarium/%{name}-%{version}.tar.gz
 Patch0:		stellarium-0.8.2-manpage.diff
+Patch1:		stellarium-0.9.1-cjk-fontmap.patch
 Buildrequires:	mesaglu-devel 
 Buildrequires:	SDL-devel
 Buildrequires:	SDL_mixer-devel
@@ -33,19 +34,18 @@ binoculars or a small telescope.
 
 %prep 
 %setup -q
-%patch0 -p1 -b .manpage 
+%patch0 -p1 -b .manpage
+%patch1 -p0 -b .cjk
 
 %build 
-export QTDIR=/usr/lib/qt4
-export PATH=$QTDIR/bin:$PATH
-%cmake
+%cmake_qt4
 %make
-
 
 %install
 rm -rf %{buildroot}
 cd build
 make install DESTDIR=%{buildroot} INSTALL="%{_bindir}/install -c -p"
+cd -
 
 mkdir -p %{buildroot}%{_datadir}/applications
 cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
@@ -57,7 +57,7 @@ Icon=%{name}
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=Science;Astronomy;
+Categories=Science;Astronomy;Qt;
 EOF
 
 install -d -m 755 %{buildroot}{%{_iconsdir},%{_miconsdir},%{_liconsdir}}
@@ -78,11 +78,11 @@ rm -rf %{buildroot}
 %postun
 %{clean_menus}
 
-%files -f build/%{name}.lang
+%files -f %{name}.lang
 %defattr(-,root,root,0755) 
 %doc README COPYING AUTHORS 
 %{_bindir}/%{name} 
-%{_datadir}/%{name}/
+%{_datadir}/%{name}
 %{_datadir}/applications/mandriva-%{name}.desktop
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
