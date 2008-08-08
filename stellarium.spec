@@ -1,6 +1,6 @@
 %define name	stellarium
 %define version	0.9.1
-%define release	%mkrel 5
+%define release	%mkrel 6
 %define title	Stellarium
 
 Name:		%{name} 
