@@ -18,7 +18,7 @@ Buildrequires:	SDL_mixer-devel
 Buildrequires:	png-devel
 Buildrequires:	jpeg-devel
 Buildrequires:	freetype2-devel
-Buildrequires:	qt4-devel
+Buildrequires:	qt4-devel >= 3:4.4.1
 BuildRequires:	boost-devel
 BuildRequires:	gettext-devel
 Buildrequires:	cmake
@@ -70,16 +70,6 @@ convert  %{buildroot}%{_datadir}/stellarium/data/stellarium.ico[4] \
 
 %clean 
 rm -rf %{buildroot} 
-
-%if %mdkversion < 200900
-%post
-%{update_menus}
-%endif
-
-%if %mdkversion < 200900
-%postun
-%{clean_menus}
-%endif
 
 %files -f %{name}.lang
 %defattr(-,root,root,0755) 
