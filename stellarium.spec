@@ -65,7 +65,8 @@ convert  %{buildroot}%{_datadir}/stellarium/data/stellarium.ico[2] \
     %{buildroot}%{_iconsdir}/stellarium.png
 convert  %{buildroot}%{_datadir}/stellarium/data/stellarium.ico[4] \
     %{buildroot}%{_miconsdir}/stellarium.png
-%find_lang %{name}
+
+%find_lang %{name} %{name} stellarium-skycultures
 
 %clean 
 rm -rf %{buildroot} 
@@ -85,6 +86,7 @@ rm -rf %{buildroot}
 %doc README COPYING AUTHORS 
 %{_bindir}/%{name} 
 %{_datadir}/%{name}
+%{_mandir}/man1/*.1.*
 %{_datadir}/applications/mandriva-%{name}.desktop
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
