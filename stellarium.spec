@@ -1,6 +1,6 @@
 %define name	stellarium
-%define version	0.9.1
-%define release	%mkrel 6
+%define version	0.10.0
+%define release	%mkrel 1
 %define title	Stellarium
 
 Name:		%{name} 
@@ -8,10 +8,9 @@ Version:	%{version}
 Release:	%{release} 
 Summary:	Desktop planetarium 
 Group:		Sciences/Astronomy
-License:	GPLv2 
+License:	GPLv2+
 URL:		http://www.stellarium.org
-Source:		http://downloads.sourceforge.net/stellarium/%{name}-%{version}.tar.gz
-Patch0:		stellarium-0.8.2-manpage.diff
+Source:		http://downloads.sourceforge.net/stellarium/%{name}-%{version}.tgz
 Patch1:		stellarium-0.9.1-cjk-fontmap.patch
 Buildrequires:	mesaglu-devel 
 Buildrequires:	SDL-devel
@@ -34,7 +33,6 @@ binoculars or a small telescope.
 
 %prep 
 %setup -q
-%patch0 -p1 -b .manpage
 %patch1 -p0 -b .cjk
 
 %build 
