@@ -1,5 +1,5 @@
 %define name	stellarium
-%define version	0.10.0
+%define version	0.10.1
 %define release	%mkrel 1
 %define title	Stellarium
 
@@ -10,7 +10,7 @@ Summary:	Desktop planetarium
 Group:		Sciences/Astronomy
 License:	GPLv2+
 URL:		http://www.stellarium.org
-Source:		http://downloads.sourceforge.net/stellarium/%{name}-%{version}.tgz
+Source:		http://downloads.sourceforge.net/stellarium/%{name}-%{version}.tar.gz
 Patch1:		stellarium-0.9.1-cjk-fontmap.patch
 Buildrequires:	mesaglu-devel 
 Buildrequires:	SDL-devel
