@@ -1,5 +1,5 @@
 %define name	stellarium
-%define version	0.10.2
+%define version	0.10.3
 %define release	%mkrel 1
 %define title	Stellarium
 
@@ -11,7 +11,7 @@ Group:		Sciences/Astronomy
 License:	GPLv2+
 URL:		http://www.stellarium.org
 Source:		http://downloads.sourceforge.net/stellarium/%{name}-%{version}.tar.gz
-Patch1:		stellarium-0.9.1-cjk-fontmap.patch
+Patch0:		stellarium-0.10.3-fonts.patch
 Buildrequires:	mesaglu-devel 
 Buildrequires:	SDL-devel
 Buildrequires:	SDL_mixer-devel
@@ -19,7 +19,6 @@ Buildrequires:	png-devel
 Buildrequires:	jpeg-devel
 Buildrequires:	freetype2-devel
 Buildrequires:	qt4-devel >= 3:4.4.1
-BuildRequires:	boost-devel
 BuildRequires:	gettext-devel
 Buildrequires:	cmake
 Buildrequires:	imagemagick
@@ -33,7 +32,7 @@ binoculars or a small telescope.
 
 %prep 
 %setup -q
-%patch1 -p0 -b .cjk
+%patch0 -p1
 
 %build 
 %cmake_qt4
