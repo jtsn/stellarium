@@ -1,6 +1,6 @@
 %define name	stellarium
 %define version	0.10.4
-%define release	%mkrel 1
+%define release	%mkrel 2
 %define title	Stellarium
 
 Name:		%{name} 
@@ -12,6 +12,7 @@ License:	GPLv2+
 URL:		http://www.stellarium.org
 Source:		http://downloads.sourceforge.net/stellarium/%{name}-%{version}.tar.gz
 Patch0:		stellarium-0.10.3-fonts.patch
+Patch1:		stellarium-0.10.4-LC_NUMERIC.patch
 Buildrequires:	mesaglu-devel 
 Buildrequires:	SDL-devel
 Buildrequires:	SDL_mixer-devel
@@ -33,6 +34,7 @@ binoculars or a small telescope.
 %prep 
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build 
 %cmake_qt4
