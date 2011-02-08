@@ -1,11 +1,9 @@
-%define name	stellarium
-%define version	0.10.5
-%define release	%mkrel 1
+
 %define title	Stellarium
 
-Name:		%{name} 
-Version:	%{version} 
-Release:	%{release} 
+Name:		stellarium 
+Version:	0.10.6 
+Release:	%mkrel 1
 Summary:	Desktop planetarium 
 Group:		Sciences/Astronomy
 License:	GPLv2+
