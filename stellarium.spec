@@ -2,8 +2,8 @@
 %define title	Stellarium
 
 Name:		stellarium 
-Version:	0.11.0 
-Release:	%mkrel 1
+Version:	0.11.1 
+Release:	1
 Summary:	Desktop planetarium 
 Group:		Sciences/Astronomy
 License:	GPLv2+
@@ -19,7 +19,6 @@ Buildrequires:	qt4-devel >= 3:4.4.1
 BuildRequires:	gettext-devel
 Buildrequires:	cmake
 Buildrequires:	imagemagick
-BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 Stellarium renders 3D photo-realistic skies in real time. 
