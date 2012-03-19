@@ -2,13 +2,13 @@
 %define title	Stellarium
 
 Name:		stellarium 
-Version:	0.11.1 
+Version:	0.11.2
 Release:	1
 Summary:	Desktop planetarium 
 Group:		Sciences/Astronomy
 License:	GPLv2+
 URL:		http://www.stellarium.org
-Source:		http://downloads.sourceforge.net/stellarium/%{name}-%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/stellarium/%{name}-%{version}.tar.gz
 Buildrequires:	mesaglu-devel 
 Buildrequires:	SDL-devel
 Buildrequires:	SDL_mixer-devel
@@ -34,7 +34,6 @@ binoculars or a small telescope.
 %make
 
 %install
-rm -rf %{buildroot}
 cd build
 make install DESTDIR=%{buildroot} INSTALL="%{_bindir}/install -c -p"
 cd -
@@ -61,9 +60,6 @@ convert  %{buildroot}%{_datadir}/stellarium/data/stellarium.ico[4] \
     %{buildroot}%{_miconsdir}/stellarium.png
 
 %find_lang %{name} %{name} stellarium-skycultures
-
-%clean 
-rm -rf %{buildroot} 
 
 %files -f %{name}.lang
 %defattr(-,root,root,0755) 
