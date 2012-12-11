@@ -2,19 +2,19 @@
 %define title	Stellarium
 
 Name:		stellarium 
-Version:	0.11.2
-Release:	1
+Version:	0.11.4a
+Release:	%mkrel 1
 Summary:	Desktop planetarium 
 Group:		Sciences/Astronomy
 License:	GPLv2+
 URL:		http://www.stellarium.org
 Source0:	http://downloads.sourceforge.net/stellarium/%{name}-%{version}.tar.gz
-Buildrequires:	mesaglu-devel 
-Buildrequires:	SDL-devel
-Buildrequires:	SDL_mixer-devel
-Buildrequires:	png-devel
+Buildrequires:	pkgconfig(glu) 
+Buildrequires:	pkgconfig(sdl)
+Buildrequires:	pkgconfig(SDL_mixer)
+Buildrequires:	pkgconfig(libpng)
 Buildrequires:	jpeg-devel
-Buildrequires:	freetype2-devel
+Buildrequires:	pkgconfig(freetype2)
 Buildrequires:	qt4-devel >= 3:4.4.1
 BuildRequires:	gettext-devel
 Buildrequires:	cmake
@@ -27,7 +27,7 @@ binoculars or a small telescope.
 
 
 %prep 
-%setup -q
+%setup -q -n %{name}-0.11.4
 
 %build 
 %cmake_qt4
@@ -39,17 +39,6 @@ make install DESTDIR=%{buildroot} INSTALL="%{_bindir}/install -c -p"
 cd -
 
 mkdir -p %{buildroot}%{_datadir}/applications
-cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
-[Desktop Entry]
-Name=%{title}
-Comment=Desktop planetarium
-Exec=%{_bindir}/%{name} 
-Icon=%{name}
-Terminal=false
-Type=Application
-StartupNotify=true
-Categories=Science;Astronomy;Qt;
-EOF
 
 install -d -m 755 %{buildroot}{%{_iconsdir},%{_miconsdir},%{_liconsdir}}
 convert  %{buildroot}%{_datadir}/stellarium/data/stellarium.ico[1] \
@@ -59,15 +48,17 @@ convert  %{buildroot}%{_datadir}/stellarium/data/stellarium.ico[2] \
 convert  %{buildroot}%{_datadir}/stellarium/data/stellarium.ico[4] \
     %{buildroot}%{_miconsdir}/stellarium.png
 
-%find_lang %{name} %{name} stellarium-skycultures
+%find_lang %{name} %{name}-skycultures %{name}.lang
 
-%files -f %{name}.lang
+%files -f %{name}.lang 
+#%{name}-skycultures.lang
 %defattr(-,root,root,0755) 
 %doc README COPYING AUTHORS 
 %{_bindir}/%{name} 
 %{_datadir}/%{name}
 %{_mandir}/man1/*.1.*
-%{_datadir}/applications/mandriva-%{name}.desktop
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/pixmaps/stellarium.xpm
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
 %{_miconsdir}/%{name}.png
