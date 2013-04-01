@@ -2,23 +2,23 @@
 %define title	Stellarium
 
 Name:		stellarium 
-Version:	0.11.4a
-Release:	2
+Version:	0.12.0
+Release:	1
 Summary:	Desktop planetarium 
 Group:		Sciences/Astronomy
 License:	GPLv2+
 URL:		http://www.stellarium.org
 Source0:	http://downloads.sourceforge.net/stellarium/%{name}-%{version}.tar.gz
-BuildRequires:	pkgconfig(glu) 
-BuildRequires:	pkgconfig(sdl)
-BuildRequires:	pkgconfig(SDL_mixer)
-BuildRequires:	pkgconfig(libpng)
-BuildRequires:	jpeg-devel
-BuildRequires:	pkgconfig(freetype2)
-BuildRequires:	qt4-devel >= 3:4.4.1
+Buildrequires:	pkgconfig(glu) 
+Buildrequires:	pkgconfig(sdl)
+Buildrequires:	pkgconfig(SDL_mixer)
+Buildrequires:	pkgconfig(libpng)
+Buildrequires:	jpeg-devel
+Buildrequires:	pkgconfig(freetype2)
+Buildrequires:	qt4-devel >= 3:4.4.1
 BuildRequires:	gettext-devel
-BuildRequires:	cmake
-BuildRequires:	imagemagick
+Buildrequires:	cmake
+Buildrequires:	imagemagick
 
 %description
 Stellarium renders 3D photo-realistic skies in real time. 
@@ -27,7 +27,7 @@ binoculars or a small telescope.
 
 
 %prep 
-%setup -q -n %{name}-0.11.4
+%setup -q
 
 %build 
 %cmake_qt4
@@ -62,3 +62,4 @@ convert  %{buildroot}%{_datadir}/stellarium/data/stellarium.ico[4] \
 %{_iconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
 %{_miconsdir}/%{name}.png
+%{_iconsdir}/hicolor/*/apps/%{name}.png
