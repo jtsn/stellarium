@@ -2,13 +2,13 @@
 %define title	Stellarium
 
 Name:		stellarium 
-Version:	0.12.0
+Version:	0.12.4
 Release:	1
 Summary:	Desktop planetarium 
 Group:		Sciences/Astronomy
 License:	GPLv2+
 URL:		http://www.stellarium.org
-Source0:	http://downloads.sourceforge.net/stellarium/%{name}-%{version}.tar.gz
+Source0:	http://sourceforge.net/projects/stellarium/files/Stellarium-sources/0.12.4/%{name}-%{version}.tar.gz
 Buildrequires:	pkgconfig(glu) 
 Buildrequires:	pkgconfig(sdl)
 Buildrequires:	pkgconfig(SDL_mixer)
@@ -35,7 +35,7 @@ binoculars or a small telescope.
 
 %install
 cd build
-make install DESTDIR=%{buildroot} INSTALL="%{_bindir}/install -c -p"
+%makeinstall_std INSTALL="%{_bindir}/install -c -p"
 cd -
 
 mkdir -p %{buildroot}%{_datadir}/applications
@@ -63,3 +63,4 @@ convert  %{buildroot}%{_datadir}/stellarium/data/stellarium.ico[4] \
 %{_liconsdir}/%{name}.png
 %{_miconsdir}/%{name}.png
 %{_iconsdir}/hicolor/*/apps/%{name}.png
+
