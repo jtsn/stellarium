@@ -15,7 +15,7 @@ Buildrequires:	pkgconfig(SDL_mixer)
 Buildrequires:	pkgconfig(libpng)
 Buildrequires:	jpeg-devel
 Buildrequires:	pkgconfig(freetype2)
-Buildrequires:	qt4-devel >= 3:4.4.1
+Buildrequires:	qt5-devel
 BuildRequires:	gettext-devel
 Buildrequires:	cmake
 Buildrequires:	imagemagick
@@ -30,7 +30,7 @@ binoculars or a small telescope.
 %setup -q
 
 %build 
-%cmake_qt4
+%cmake_qt5
 %make
 
 %install
