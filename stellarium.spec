@@ -2,8 +2,8 @@
 %define title	Stellarium
 
 Name:		stellarium 
-Version:	0.12.4
-Release:	2
+Version:	0.14.1
+Release:	1
 Summary:	Desktop planetarium 
 Group:		Sciences/Astronomy
 License:	GPLv2+
@@ -48,14 +48,12 @@ convert  %{buildroot}%{_datadir}/stellarium/data/stellarium.ico[2] \
 convert  %{buildroot}%{_datadir}/stellarium/data/stellarium.ico[4] \
     %{buildroot}%{_miconsdir}/stellarium.png
 
-%find_lang %{name} %{name}-skycultures %{name}.lang
 
-%files -f %{name}.lang 
-#%{name}-skycultures.lang
-%defattr(-,root,root,0755) 
+%files
 %doc README COPYING AUTHORS 
 %{_bindir}/%{name} 
 %{_datadir}/%{name}
+%{_datadir}/appdata/%{name}.appdata.xml
 %{_mandir}/man1/*.1.*
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/stellarium.xpm
