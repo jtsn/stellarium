@@ -16,6 +16,7 @@ Buildrequires:	pkgconfig(libpng)
 Buildrequires:	jpeg-devel
 Buildrequires:	pkgconfig(freetype2)
 Buildrequires:	qt5-devel
+BuildRequires:	cmake(Qt5Script)
 BuildRequires:  cmake(Qt5SerialPort)
 BuildRequires:	cmake(Qt5LinguistTools)
 BuildRequires:	gettext-devel
