@@ -1,7 +1,2 @@
-removed_sources:
-  stellarium-0.11.0.tar.gz: e0d7293e175ac302b45d2849a82a8c0fa7e3ca3e
-  stellarium-0.11.4a.tar.gz: 4b0cadde9d91ec7ab821f4db955dec6111dbb51a
-  stellarium-0.12.0.tar.gz: c6cc8f0954d976584e8ab9bc061f3b35e3b84251
-  stellarium-0.12.4.tar.gz: 6d3cc4dc186db831af76830fe2e636ff1f7bbc90
 sources:
-  stellarium-0.14.1.tar.gz: 54640494a57f7eae044e14f8d448772908d8d05d
+  stellarium-0.14.2.tar.gz: c32cb7488efa420e523a4d6f8c4f57170e79527e
