@@ -2,13 +2,13 @@
 %define title	Stellarium
 
 Name:		stellarium 
-Version:	0.14.2
+Version:	0.14.3
 Release:	1
 Summary:	Desktop planetarium 
 Group:		Sciences/Astronomy
 License:	GPLv2+
 URL:		http://www.stellarium.org
-Source0:	http://sourceforge.net/projects/stellarium/files/Stellarium-sources/0.14.2/%{name}-%{version}.tar.gz
+Source0:	http://sourceforge.net/projects/stellarium/files/Stellarium-sources/0.14.3/%{name}-%{version}.tar.gz
 Buildrequires:	pkgconfig(glu) 
 Buildrequires:	pkgconfig(sdl)
 Buildrequires:	pkgconfig(SDL_mixer)
